@@ -1,19 +1,19 @@
 <?php
  $servername="localhost";
 $username="root";
-$password=" ";
+$password="";
 $dbname="lyon";
 
 $conn=mysqli_connect($servername,$username,$password,$dbname);
 if(isset($_POST['submit'])){
 
-$fname=mysql_real_escape_string($_POST['fname']);
-$lname=mysql_real_escape_string($_POST['lname']);
-$email=mysql_real_escape_string($_POST['gender']);
-$gender=mysql_real_escape_string($_POST['txtarea']);
+$fname=$_POST['firstname'];
+$lname=$_POST['lastname'];
+$email=$_POST['email'];
+$gender=$_POST['gender'];
 
     	
-    			$sql= "INSERT INTO form(fname,lname,email,gender) VALUES('$fname','$lname','$email','$gender');";
+    			$sql= "INSERT INTO form(firstname,lastname,email,gender) VALUES('$fname','$lname','$email','$gender');";
                   if(mysqli_query($conn,$sql)){
       echo "in";
       header("Location: A.php");
@@ -52,25 +52,18 @@ $gender=mysql_real_escape_string($_POST['txtarea']);
     border-radius: 5px;
     border:1px solid gray;
 }
-.input-group textarea{
-    height: 200px;
-    width: 93%;
-    padding: 5px 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    border:1px solid gray;
-}
+
 .btn{
     padding: 10px;
     font-size: 20px;
     color: white;
-    background:lightgreen;
+    background:lightblue;
     border:none;
     margin: 2px;
 
 }
 .btn:hover{
-    background:green;
+    background:blue;
 }
 .h{
   text-align: center;
@@ -79,22 +72,20 @@ $gender=mysql_real_escape_string($_POST['txtarea']);
 	</style>
 </head>
 <body>
-
-<form action="j.php" method="post">
-	<h2 class="h">Registration form</h2>
-	<div class="input-group">
-Fname: <input type="text" name="fname" placeholder="first name .....">	
-</div>
-<div class="input-group">
-Lname: <input type="text" name="lname" placeholder="last name .....">
-</div>
-
-Gender: Male<input type="radio" name="gender" value="male"> Female<input type="radio" name="gender" value="female">
-<div class="input-group">
-Your Story : <textarea name="txtarea" placeholder="write your Story"></textarea>
-</div>
-<button type="submit" name="submit" class="btn"><span> Submit</button>
-
+  <h1><center>REGISTRATION</center></h1>
+<form action="A.php" method="post">
+First name:<br>
+<input type="text" name="firstname">
+<br>
+Last name:<br>
+<input type="text" name="lastname">
+<br>
+Email:<br>
+<input type="text" name="email">
+<br>
+<input type="radio" name="gender" value="male"> Male <br>
+<input type="radio" name="gender" value="female"> Female <br>
+<input type="submit" name="submit" value="submit">
 
 </form>
 </body>
